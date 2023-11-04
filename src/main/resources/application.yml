@@ -1,0 +1,24 @@
+# 应用服务 WEB 访问端口
+server:
+  port: 8888
+
+spring:
+  datasource:
+    username: root
+    password: 123qwe
+    url: jdbc:mysql://localhost:3306/test1?characterEncoding=UTF-8&useSSL=false&useUnicode=true
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    type: com.alibaba.druid.pool.DruidDataSource
+
+logging:
+  level:
+    com.ouwen: info
+
+
+mybatis-plus:
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+  global-config:
+    db-config:
+      table-prefix: o_
+      id-type: auto

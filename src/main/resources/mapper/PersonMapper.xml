@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.springmvc.demo.mapper.PersonMapper">
+    <select id="findCount" resultType="java.lang.Integer">
+        select count(*) from o_person
+    </select>
+    <insert id="addPerson" parameterType="com.springmvc.demo.entity.Person">
+        insert into o_person(name,nickname,age) values(#{name},#{nickname},#{age})
+    </insert>
+    <update id="updatePerson" parameterType="com.springmvc.demo.entity.Person">
+        update o_person set name=#{name},nickname=#{nickname},age=#{age} where Id = #{Id}
+    </update>
+    <delete id="delById" parameterType="com.springmvc.demo.entity.Person" >
+        delete from o_person where id = #{Id}
+    </delete>
+    <delete id="delById2" parameterType="com.springmvc.demo.entity.Person">
+        delete from o_person where id = #{Id}
+    </delete>
+    <select id="findById" resultType="com.springmvc.demo.entity.Person" parameterType="java.lang.Integer">
+        select * from o_person where id = #{Id}
+    </select>
+    <select id="findAll" resultType="com.springmvc.demo.entity.Person">
+        select * from o_person
+    </select>
+    <select id="findByName" resultType="com.springmvc.demo.entity.Person" parameterType="java.lang.String">
+        select * from o_person where `name` like concat('%',#{name},'%')
+    </select>
+    <select id="findByPerson" parameterType="com.springmvc.demo.entity.Person" resultType="com.springmvc.demo.entity.Person">
+        select * from o_person where  `name` = #{name} and nickname = #{nickname}
+    </select>
+    <select id="findByPerson2" parameterType="com.springmvc.demo.entity.Person" resultType="com.springmvc.demo.entity.Person">
+        select * from o_person where  `name` = #{name} and nickname = #{nickname}
+    </select>
+    <select id="findColList" resultType="com.springmvc.demo.entity.Person">
+        select * from o_person order by ${colname}
+    </select>
+</mapper>

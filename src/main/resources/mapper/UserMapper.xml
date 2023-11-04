@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.springmvc.demo.mapper.UserMapper">
+    <select id="findAll" resultType="com.springmvc.demo.entity.User">
+        select * from o_user;
+    </select>
+
+    <insert id="addUser" parameterType="com.springmvc.demo.entity.User">
+        insert into o_user(username,password) values(#{userName},#{password});
+    </insert>
+
+    <update id="updateUser" parameterType="com.springmvc.demo.entity.User">
+        update o_user set username=#{userName},password=#{password} where userId=#{userId};
+    </update>
+
+    <delete id="deleteUser" parameterType="com.springmvc.demo.entity.User">
+        delete from o_user where userId=#{userId};
+    </delete>
+    <delete id="deleteByUsername" parameterType="com.springmvc.demo.entity.User">
+        delete from o_user where username=#{username};
+    </delete>
+</mapper>
